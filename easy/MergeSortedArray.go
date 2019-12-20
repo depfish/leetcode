@@ -13,30 +13,33 @@ func main() {
 //nums2 = [2,5,6],       n = 3
 
 //Output: [1,2,2,3,5,6]
-
+//        [1 2 3 2 5 6]
+//        [1 2 3 0 5 6]
+//        [1 2 3 2 5 6]
 //链接：https://leetcode-cn.com/problems/merge-sorted-array
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	if nums2[0] > nums1[m-1]{
-		for i:=n-1;i>=0;i--{
-			nums1[m+i]=nums2[i]
+	j:=m-1
+	k:=n-1
+	s:=m+n-1
+	for i:=k;i>=0;i--{
+		if nums1[j] > nums2[i]{
+			nums1[s]=nums1[j]
+		}
+		if nums1[j] <= nums2[i]{
+			nums1[s]=nums2[i]
 		}
 
-		return
+		//if nums1[j]==nums2[i]{
+		//	for p:=s;p>=1;p--{
+		//		nums1[p]=nums1[p-1]
+		//	}
+		//	nums1[j+1]=nums2[i]
+		//}
+
+		j--
+		s--
 	}
 
-	if nums2[0] < nums1[m-1]{
-		for i:=n-1;i>=0;i--{
-			if nums2[i] > nums1[m-1]{
-				nums1[m+i]=nums2[i]
-			}else{
-				for k:=0;k<m+n-i;i++{
-					if nums2[i] > nums1[k] && nums2[i] < nums1[k+1]{
-
-					}
-				}
-			}
-		}
-
-	}
+	//fmt.Println(nums1)
 }
