@@ -13,7 +13,9 @@ func main() {
 //nums2 = [2,5,6],       n = 3
 
 //Output: [1,2,2,3,5,6]
-
+//        [1 2 3 2 5 6]
+//        [1 2 3 0 5 6]
+//        [1 2 3 2 5 6]
 //链接：https://leetcode-cn.com/problems/merge-sorted-array
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
@@ -36,5 +38,6 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 			nPointer--
 		}
 	}
+
 
 }
