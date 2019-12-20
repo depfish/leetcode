@@ -1,11 +1,11 @@
 package main
 
 func main() {
-	var nums1 =make([]int,6)
+	var nums1 =make([]int,8)
 	nums1[0],nums1[1],nums1[2]=1,2,3
-	var nums2 = []int{2, 5, 6}
+	var nums2 = []int{1, 5, 6,7,8}
 
-	merge(nums1, 3, nums2, 3)
+	merge(nums1, 3, nums2, 5)
 
 }
 
@@ -17,26 +17,24 @@ func main() {
 //链接：https://leetcode-cn.com/problems/merge-sorted-array
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	if nums2[0] > nums1[m-1]{
-		for i:=n-1;i>=0;i--{
-			nums1[m+i]=nums2[i]
-		}
+	mPointer:=m
+	nPointer:=n
 
-		return
+	for mPointer >0 && nPointer >0{
+		if nums2[nPointer-1] > nums1[mPointer-1]{
+			nums1[mPointer+nPointer-1]=nums2[nPointer-1]
+			nPointer--
+		}else {
+			nums1[mPointer+nPointer-1]=nums1[mPointer-1]
+			mPointer--
+		}
 	}
 
-	if nums2[0] < nums1[m-1]{
-		for i:=n-1;i>=0;i--{
-			if nums2[i] > nums1[m-1]{
-				nums1[m+i]=nums2[i]
-			}else{
-				for k:=0;k<m+n-i;i++{
-					if nums2[i] > nums1[k] && nums2[i] < nums1[k+1]{
-
-					}
-				}
-			}
+	if mPointer ==0 && nPointer > 0 {
+		for nPointer > 0{
+			nums1[mPointer+nPointer-1]=nums2[nPointer-1]
+			nPointer--
 		}
-
 	}
+
 }
