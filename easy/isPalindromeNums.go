@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
-	nums := 121
+	nums := 123
 	// 1221
 	// 123
 	fmt.Println(isPalindrome(nums))
@@ -11,13 +14,13 @@ func main() {
 }
 
 func isPalindrome(x int) bool {
-	if x < 0 || (x%10 == 0 && x != 0) {
+	if x < 0 || (x%10 == 0 && x !=0) {
 		return false
 	}
-	var reverse int = 0
-	for x > reverse {
-		reverse = reverse * 10 + x%10
-		x /= 10
+	str := strconv.Itoa(x)
+	var rev string
+	for _, v := range str {
+		rev =  string(v) + rev
 	}
-	return x ==  reverse || x == reverse/10
+	return str == rev
 }
